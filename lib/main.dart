@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
+import 'package:hayaath_shopping/routes/routes.dart';
 import 'package:hayaath_shopping/theme/application_theme.dart';
 
 void main() {
@@ -11,8 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: LoginPage(),
       theme: HayaathTheme.theme,
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: (settings) => generateRoute(settings),
     );
   }
 }
