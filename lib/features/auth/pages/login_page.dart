@@ -7,7 +7,7 @@ import '../widgets/textfield.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-  static const String routeName = '/auth-screen';
+  static const String routeName = '/loginpage';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -37,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Welcome Back to Hayaath 🦄',
                           style: TextStyle(
+                              color: Pallete.pureblack,
                               fontWeight: FontWeight.bold,
                               fontSize: 35,
                               fontStyle: FontStyle.italic),

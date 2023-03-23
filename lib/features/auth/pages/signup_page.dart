@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../common/roundbutton.dart';
 import '../../../theme/colors.dart';
 import '../widgets/textfield.dart';
-import 'login_page.dart';
 
 class SignUPage extends StatefulWidget {
   const SignUPage({super.key});
-  static const String routeName = '/signUP-screen';
+  static const String routeName = '/signuppage';
 
   @override
   State<SignUPage> createState() => _SignUPageState();
