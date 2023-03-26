@@ -3,6 +3,8 @@ import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import 'package:hayaath_shopping/routes/routes.dart';
 import 'package:hayaath_shopping/theme/application_theme.dart';
 
+final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
       home: const LoginPage(),
       theme: HayaathTheme.theme,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: (settings) => generateRoute(settings),
+      navigatorKey: _navigatorKey,
+      routes: routes,
     );
   }
 }

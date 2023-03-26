@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/constants/global_variables.dart';
+import 'package:hayaath_shopping/features/auth/pages/signup_page.dart';
 import '../../../common/roundbutton.dart';
 import '../../../theme/colors.dart';
 import '../widgets/textfield.dart';
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.pushNamed(
-                                          context, LoginPage.routeName);
+                                          context, SignUPage.routeName);
                                     })
                             ]),
                       ),

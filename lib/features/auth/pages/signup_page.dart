@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
+import 'package:hayaath_shopping/constants/global_variables.dart';
+import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import '../../../common/roundbutton.dart';
 import '../../../theme/colors.dart';
 import '../widgets/textfield.dart';
@@ -32,6 +33,17 @@ class _SignUPageState extends State<SignUPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
+                    const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'WELCOME TO HAYAATH SHOPPING 🛒',
+                          style: TextStyle(
+                              color: Pallete.pureblack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              fontStyle: FontStyle.italic),
+                        )),
+                    rrHeight60,
                     AuthTextField(
                       controller: usernameController,
                       labelText: 'Usernane',
@@ -57,7 +69,7 @@ class _SignUPageState extends State<SignUPage> {
                       text: TextSpan(
                         text: "Already have an account?",
                         style: const TextStyle(
-                            fontSize: 16, color: Pallete.backgroundColor),
+                            fontSize: 16, color: Pallete.pureblack),
                         children: [
                           TextSpan(
                             text: ' Login',
@@ -68,7 +80,7 @@ class _SignUPageState extends State<SignUPage> {
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushNamed(
-                                    context, SignUPage.routeName);
+                                    context, LoginPage.routeName);
                               },
                           ),
                         ],
