@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 //MIDDILEWARE
+app.use(express.json());
 app.use(authRouter);
 
 //api

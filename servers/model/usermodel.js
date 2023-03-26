@@ -3,23 +3,21 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     name: {
         required: true,
-        type: String,
         trim: true,
-
-
+        type: String
     },
     email: {
         required: true,
         type: String,
         trim: true,
-        validator: {
+        validate: {
             validator: (value) => {
-                const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                const re =
+                    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
                 return value.match(re);
             },
-            message: "Please enter valid email address",
-        }
-
+            message: "Please enter a valid email address",
+        },
     },
     password: {
         required: true,
@@ -39,5 +37,5 @@ const userSchema = mongoose.Schema({
     //CART
 });
 
-const User = mongoose.model("User",userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
