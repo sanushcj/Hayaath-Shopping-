@@ -44,10 +44,38 @@ class _LoginPageState extends State<LoginPage> {
                               fontStyle: FontStyle.italic),
                         )),
                     rrHeight60,
+                   AuthTextField(
+                      controller: emailController,
+                      labelText: 'Email',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'please Enter your Email';
+                        }
+                        if (!RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                          return 'please Enter Valid Email';
+                        }
+                        return null;
+                      },
+                    ),
                     AuthTextField(
-                        controller: emailController, labelText: 'Email'),
-                    AuthTextField(
-                        controller: passwordController, labelText: 'Password'),
+                      controller: passwordController,
+                      labelText: 'Password',
+                      validator: (value) {
+                        RegExp regex = RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if (value == null) {
+                          return 'Please enter password';
+                        } else {
+                          if (!regex.hasMatch(value)) {
+                            return 'Enter valid password';
+                          } else {
+                            return null;
+                          }
+                        }
+                      },
+                    ),
                     Align(
                         alignment: Alignment.topRight,
                         child: RoundedButton(onTap: () {}, label: 'Done')),

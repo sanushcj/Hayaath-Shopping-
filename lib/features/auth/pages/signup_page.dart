@@ -4,6 +4,7 @@ import 'package:hayaath_shopping/constants/global_variables.dart';
 import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import '../../../common/roundbutton.dart';
 import '../../../theme/colors.dart';
+import '../services/signup_service.dart';
 import '../widgets/textfield.dart';
 
 class SignUPage extends StatefulWidget {
@@ -18,8 +19,24 @@ class _SignUPageState extends State<SignUPage> {
   final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final SignUpServie SignUpServieController = SignUpServie();
   final _signUpKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  signup() {
+    SignUpServieController.signupUser(
+        name: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+        ctx: context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,21 +64,54 @@ class _SignUPageState extends State<SignUPage> {
                     AuthTextField(
                       controller: usernameController,
                       labelText: 'Usernane',
+                      validator: (value) {
+                        if (value!.isEmpty || value == null) {
+                          return 'Please enter your name';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
                     AuthTextField(
                       controller: emailController,
                       labelText: 'Email',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'please Enter your Email';
+                        }
+                        if (!RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                          return 'please Enter Valid Email';
+                        }
+                        return null;
+                      },
                     ),
                     AuthTextField(
                       controller: passwordController,
                       labelText: 'Password',
+                      validator: (value) {
+                        RegExp regex = RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if (value == null) {
+                          return 'Please enter password';
+                        } else {
+                          if (!regex.hasMatch(value)) {
+                            return 'Enter valid password';
+                          } else {
+                            return null;
+                          }
+                        }
+                      },
                     ),
                     const SizedBox(height: 40),
                     Align(
                       alignment: Alignment.topRight,
                       child: RoundedButton(
                         label: 'Sign UP',
-                        onTap: () {},
+                        onTap: () {
+                          signup();
+                        },
                       ),
                     ),
                     const SizedBox(height: 50),

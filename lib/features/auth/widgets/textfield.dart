@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import '../../../theme/colors.dart';
 
 class AuthTextField extends StatelessWidget {
-  const AuthTextField({
+   AuthTextField({
     super.key,
     required this.controller,
     required this.labelText,
+    required this.validator
   });
   final TextEditingController controller;
   final String labelText;
+  String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextFormField(
-        // validator: (value) => ,
+        validator:validator,
         controller: controller,
         decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
