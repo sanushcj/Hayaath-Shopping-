@@ -19,7 +19,7 @@ class _SignUPageState extends State<SignUPage> {
   final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  final SignUpServie SignUpServieController = SignUpServie();
+  final SignUpServie signUpServieController = SignUpServie();
   final _signUpKey = GlobalKey<FormState>();
 
   @override
@@ -31,7 +31,7 @@ class _SignUPageState extends State<SignUPage> {
   }
 
   signup() {
-    SignUpServieController.signupUser(
+    signUpServieController.signupUser(
         name: usernameController.text,
         email: emailController.text,
         password: passwordController.text,
@@ -65,7 +65,7 @@ class _SignUPageState extends State<SignUPage> {
                       controller: usernameController,
                       labelText: 'Usernane',
                       validator: (value) {
-                        if (value!.isEmpty || value == null) {
+                        if (value!.isEmpty) {
                           return 'Please enter your name';
                         } else {
                           return null;
@@ -91,13 +91,11 @@ class _SignUPageState extends State<SignUPage> {
                       controller: passwordController,
                       labelText: 'Password',
                       validator: (value) {
-                        RegExp regex = RegExp(
-                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                         if (value == null) {
                           return 'Please enter password';
                         } else {
-                          if (!regex.hasMatch(value)) {
-                            return 'Enter valid password';
+                          if (value.length < 5) {
+                            return 'Enter a Strong password';
                           } else {
                             return null;
                           }
@@ -110,7 +108,9 @@ class _SignUPageState extends State<SignUPage> {
                       child: RoundedButton(
                         label: 'Sign UP',
                         onTap: () {
-                          signup();
+                          if (_signUpKey.currentState!.validate()) {
+                            signup();
+                          }
                         },
                       ),
                     ),

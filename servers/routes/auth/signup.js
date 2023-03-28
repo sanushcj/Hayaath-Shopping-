@@ -6,12 +6,12 @@ const User = require("../../model/usermodel");
 
 const loginRouter = express.Router();
 
-loginRouter.post("authentication/signup", async (req, result) => {
+loginRouter.post("/authentication/signup", async (req, result) => {
     try {
         const {
             email,
             name,
-            thepassword
+            password,address,usertype
         } = req.body;
         const existingUser = await User.findOne({
             email
@@ -22,12 +22,14 @@ loginRouter.post("authentication/signup", async (req, result) => {
             });
         }
 
-        const encryptedPassword = await bcrypt.hash(thepassword, 8);
+        const encryptedPassword = await bcrypt.hash(password, 8);
 
         let user = new User({
             email,
             password: encryptedPassword,
-            name
+            name,
+            address,
+            usertype
         });
 
         user = await user.save();

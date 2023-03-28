@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/failures/errorhandling.dart';
@@ -8,6 +10,7 @@ import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../network/mynet.dart';
+
 class SignUpServie {
   signupUser(
       {required String name,
@@ -18,27 +21,32 @@ class SignUpServie {
       User user = User(
         id: '',
         name: name,
-        email: email,
         password: password,
-        address: 'User',
+        email: email,
+        address: '',
         type: '',
-        token: '',
       );
-      final theurl = Uri.parse('$url/apiauthentication/signup');
-      http.Response result = await http
-          .post(theurl, body: user.toJson(), headers: <String, String>{
-        'Content-Type': 'application/json;' 'charset=UTF-8',
-      });
-      if (kDebugMode) {
-        print(result);
-      }
+
+      http.Response res = await http.post(
+        Uri.parse('http://192.168.18.250:3000/authentication/signup'),
+        body: user.toJson(),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+
       errorHandling(
-          onSuccess: () {
-            showSnackBar(ctx, 'Congratulations Your Account has been Created');
-          },
-          response: result,
-          context: ctx);
+        response: res,
+        context: ctx,
+        onSuccess: () {
+          showSnackBar(
+            ctx,
+            'Account created! Login with the same credentials!',
+          );
+        },
+      );
     } catch (e) {
+      log(e.toString());
       showSnackBar(ctx, 'Oops $e'.toString());
     }
   }
