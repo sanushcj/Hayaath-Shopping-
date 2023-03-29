@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
 import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import 'package:hayaath_shopping/routes/routes.dart';
 import 'package:hayaath_shopping/theme/application_theme.dart';
+import 'package:provider/provider.dart';
 
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
