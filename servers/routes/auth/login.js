@@ -37,17 +37,12 @@ loginrouter.post('/authentication/login', async (req, result) => {
                 ...user._doc
             });
         }
-
-
     } catch (error) {
-        console.log('errorrrrrrrrr')
+        console.log('Sanush Sir there is an error,'+error)
         result.status(500).json({
             error: error.message
         });
     }
-
-
-
 })
 
 module.exports = loginrouter;
