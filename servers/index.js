@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 //IMPORTS FROM OTHER FILES 
-const authRouter = require("./routes/auth/signup.js");
+const signUpRouter = require("./routes/auth/signup.js");
+const loginrouter = require('./routes/auth/login.js');
 
 
 // INIT
@@ -13,7 +14,8 @@ const app = express();
 
 //MIDDILEWARE
 app.use(express.json());
-app.use(authRouter);
+app.use(signUpRouter);
+app.use(loginrouter);
 
 //api
 app.get("/hello-world",(req,result) => {

@@ -4,14 +4,14 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const User = require("../../model/usermodel");
 
-const loginRouter = express.Router();
+const signUProuter = express.Router();
 
-loginRouter.post("/authentication/signup", async (req, result) => {
+signUProuter.post("/authentication/signup", async (req, result) => {
     try {
         const {
             email,
             name,
-            password,address,usertype
+            password,
         } = req.body;
         const existingUser = await User.findOne({
             email
@@ -28,8 +28,6 @@ loginRouter.post("/authentication/signup", async (req, result) => {
             email,
             password: encryptedPassword,
             name,
-            address,
-            usertype
         });
 
         user = await user.save();
@@ -44,8 +42,4 @@ loginRouter.post("/authentication/signup", async (req, result) => {
 
 
 });
-
-
-
-
-module.exports = loginRouter;
+module.exports = signUProuter;
