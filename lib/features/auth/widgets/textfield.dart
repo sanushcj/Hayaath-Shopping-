@@ -10,7 +10,7 @@ class AuthTextField extends StatelessWidget {
   });
   final TextEditingController controller;
   final String labelText;
-  String? Function(String?)? validator;
+ final  String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(

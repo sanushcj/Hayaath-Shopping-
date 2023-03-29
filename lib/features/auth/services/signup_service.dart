@@ -1,15 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
-
-import '../../../network/mynet.dart';
 
 class SignUpServie {
   signupUser(
