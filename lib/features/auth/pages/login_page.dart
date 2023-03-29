@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/constants/global_variables.dart';
 import 'package:hayaath_shopping/features/auth/pages/signup_page.dart';
+import 'package:hayaath_shopping/features/auth/services/login_service.dart';
 import '../../../common/roundbutton.dart';
 import '../../../theme/colors.dart';
 import '../widgets/textfield.dart';
@@ -18,6 +19,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _logInFormKey = GlobalKey<FormState>();
+  LoginService loginController = LoginService();
+
+  loginuser() {
+    loginController.loginUser(
+        email: emailController.text,
+        context: context,
+        password: passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                               fontStyle: FontStyle.italic),
                         )),
                     rrHeight60,
-                   AuthTextField(
+                    AuthTextField(
                       controller: emailController,
                       labelText: 'Email',
                       validator: (value) {
@@ -78,7 +87,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Align(
                         alignment: Alignment.topRight,
-                        child: RoundedButton(onTap: () {}, label: 'Done')),
+                        child: RoundedButton(
+                            onTap: () {
+                              loginuser();
+                            },
+                            label: 'Done')),
                     const SizedBox(
                       height: 50,
                     ),

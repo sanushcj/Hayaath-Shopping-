@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const User = require("../../model/usermodel");
-
 const signUProuter = express.Router();
 
 signUProuter.post("/authentication/signup", async (req, result) => {
@@ -39,7 +38,5 @@ signUProuter.post("/authentication/signup", async (req, result) => {
             error: error.message
         });
     }
-
-
 });
 module.exports = signUProuter;
