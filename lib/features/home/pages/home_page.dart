@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
 import 'package:provider/provider.dart';
 
