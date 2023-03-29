@@ -1,9 +1,11 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../network/mynet.dart';
 
 class LoginService {
@@ -32,8 +34,10 @@ class LoginService {
 
       // ignore: use_build_context_synchronously
       errorHandling(
-          onSuccess: () {
-            showSnackBar(context, "Login Successfully");
+          onSuccess: () async {
+            log(response.body.toString());
+            // SharedPreferences prefs = await SharedPreferences.getInstance();
+            // prefs.setString('x-auth-token', jsonDecode(response.body)['token']);
           },
           response: response,
           context: context);
