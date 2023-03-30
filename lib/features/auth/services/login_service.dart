@@ -22,7 +22,7 @@ class LoginService {
           email: email,
           password: password,
           address: '',
-          type: '');
+          type: '',token: '');
 
       final uri = Uri.parse('$url/authentication/login');
 

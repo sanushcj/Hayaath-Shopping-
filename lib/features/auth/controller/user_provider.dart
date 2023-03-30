@@ -3,7 +3,7 @@ import 'package:hayaath_shopping/model/usermodel.dart';
 
 class UserProvider extends ChangeNotifier {
   User _user =
-      User(id: '', name: '', email: '', password: '', address: '', type: '');
+      User(id: '', name: '', email: '', password: '', address: '', type: '',token: '');
 
   User get user => _user;
 

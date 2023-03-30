@@ -5,6 +5,7 @@ import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
+import '../../../network/mynet.dart';
 
 class SignUpServie {
   signupUser(
@@ -20,10 +21,11 @@ class SignUpServie {
         email: email,
         address: '',
         type: '',
+        token: ''
       );
 
       http.Response res = await http.post(
-        Uri.parse('http://192.168.18.250:3000/authentication/signup'),
+        Uri.parse('$url/authentication/signup'),
         body: user.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
