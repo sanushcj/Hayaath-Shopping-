@@ -16,7 +16,7 @@ class TokenCheck {
       if (token == null) {
         prefs.setString('x-auth-token', '');
       }
-      final tokenuri = Uri.parse('$url/authentication/usercheck');
+      final tokenuri = Uri.parse('$url/token');
 
       http.Response tokenResult = await http.post(tokenuri,
           headers: <String, String>{

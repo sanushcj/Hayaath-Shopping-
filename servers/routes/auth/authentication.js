@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../../model/usermodel');
 const auth = require('../../middlewares/authentication_wares');
-const tokenRouter = express.Router();
+const { protect } = require('../../middlewares/jwtAuth');
+const tokenCheck = express.Router();
 
-tokenRouter.post('/authentication/usercheck', async (req, result) => {
+tokenCheck.post('/authentication/usercheck', async (req, result) => {
 
     try {
         if (authHeader) {
@@ -33,10 +34,13 @@ tokenRouter.post('/authentication/usercheck', async (req, result) => {
 
 //getUserData
 
-tokenRouter.get("/", auth, async (req, res) => {
+tokenCheck.get("/", auth, async (req, res) => {
     const user = await User.findById(req.user);
     res.json({ ...user._doc, token: req.token });
   });
 
+// router.route("/token").get(protect,(req,res)=>{
+//     res.send("HI")
+// })
 
-module.exports = tokenRouter;
+module.exports = tokenCheck;

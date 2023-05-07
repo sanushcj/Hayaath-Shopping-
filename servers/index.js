@@ -23,13 +23,11 @@ app.use(tokenCheck);
 app.get("/hello-world",(req,result) => {
 result.json({hi : "mutheee"})
 } );
-
-
 //CONNECTIONS
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`connected at port ${PORT}`);
   });
 
   mongoose.connect(DB).then(()=>{
-    console.log('Nee oru killadi thanne')
+    console.log('DataBase Connected Area51')
   })

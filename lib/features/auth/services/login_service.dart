@@ -22,7 +22,8 @@ class LoginService {
           email: email,
           password: password,
           address: '',
-          type: '',token: '');
+          type: '',
+          token: '');
 
       final uri = Uri.parse('$url/authentication/login');
 
@@ -41,8 +42,7 @@ class LoginService {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             Provider.of<UserProvider>(context, listen: false)
                 .setUser(response.body);
-            prefs.setString(
-                'x-auth-token', jsonDecode(response.body)['mytoken']);
+            prefs.setString('x-auth-token', jsonDecode(response.body)['token']);
             Navigator.pushNamedAndRemoveUntil(
                 context, HomePage.routeName, (route) => false);
           },

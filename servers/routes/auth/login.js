@@ -28,12 +28,12 @@ loginrouter.post('/authentication/login', async (req, result) => {
                 msg: 'User with this email or password does not match'
             });
         } else {
-            const mytoken = await jwt.sign({
+            const token =  jwt.sign({
                 id: user._id
             }, "passwordKey");
 
             result.json({
-                mytoken,
+                token,
                 ...user._doc
             });
         }

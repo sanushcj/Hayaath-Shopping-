@@ -15,14 +15,13 @@ class SignUpServie {
       required BuildContext ctx}) async {
     try {
       User user = User(
-        id: '',
-        name: name,
-        password: password,
-        email: email,
-        address: '',
-        type: '',
-        token: ''
-      );
+          id: '',
+          name: name,
+          password: password,
+          email: email,
+          address: '',
+          type: '',
+          token: '');
 
       http.Response res = await http.post(
         Uri.parse('$url/authentication/signup'),

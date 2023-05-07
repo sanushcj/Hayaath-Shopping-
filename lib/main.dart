@@ -36,7 +36,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Provider.of<UserProvider>(context).user.token.isEmpty ? const LoginPage() : HomePage(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const HomePage()
+          : LoginPage(),
       theme: HayaathTheme.theme,
       debugShowCheckedModeBanner: false,
       navigatorKey: _navigatorKey,
