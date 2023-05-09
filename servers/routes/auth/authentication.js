@@ -23,6 +23,7 @@ tokenCheck.post('/authentication/usercheck', async (req, result) => {
 
         }
     } catch (error) {
+        console.log('err',error);
         result.status(500).json({
             error: error.message
         });

@@ -10,7 +10,7 @@ const tokenCheck = require("./routes/auth/authentication.js");
 
 // INIT
 const DB = "mongodb+srv://sanushcj:prosanush@cluster0.wixg0g1.mongodb.net/?retryWrites=true&w=majority"
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const app = express();
 
 //MIDDILEWARE

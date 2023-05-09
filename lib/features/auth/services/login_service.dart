@@ -35,7 +35,6 @@ class LoginService {
         },
       );
 
-      // ignore: use_build_context_synchronously
       errorHandling(
           onSuccess: () async {
             print(response.body.toString());
