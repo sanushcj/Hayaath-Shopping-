@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
-import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import 'package:hayaath_shopping/features/auth/services/tokencheck.dart';
-import 'package:hayaath_shopping/features/home/pages/home_page.dart';
+import 'package:hayaath_shopping/features/splash/page/splashscreen.dart';
 import 'package:hayaath_shopping/routes/routes.dart';
 import 'package:hayaath_shopping/theme/application_theme.dart';
 import 'package:provider/provider.dart';
@@ -17,31 +16,27 @@ void main() async {
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
     )
-  ], child: const MyApp()));
+  ], child:  MyApp()));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  TokenCheck tokenController = TokenCheck();
-
-  @override
+TokenCheck tokencontroller = TokenCheck();
+@override
   void initState() {
+    tokencontroller.tokenResult(context: context);
     super.initState();
-    tokenController.tokenResult(context: context);
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const HomePage()
-          : LoginPage(),
+      home: SplashScreen(),
       theme: HayaathTheme.theme,
       debugShowCheckedModeBanner: false,
       navigatorKey: _navigatorKey,

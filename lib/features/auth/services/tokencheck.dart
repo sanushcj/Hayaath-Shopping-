@@ -14,34 +14,26 @@ class TokenCheck {
     try {
       String? token = mysharedPreferences.getString('x-auth-token');
       if (token == null) {
-        log('token null in token check');
         mysharedPreferences.setString('x-auth-token', '');
       }
-      log('token not null in token check');
 
       final tokenuri = Uri.parse('$url/authentication/usercheck');
-log(token.toString()
-);
       http.Response tokenResult = await http.post(tokenuri,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'Bearer': token!
           });
-          log(tokenResult.body);
       bool response = jsonDecode(tokenResult.body);
       // log(response);
 
       if (response
        == true) {
-        log('token not null in token check response trueeeee');
-
         http.Response userResponse = await http.get(
             Uri.parse('$url/authentication/userdata'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
               'Bearer': token
             });
-            log(userResponse.body);
 
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userResponse.body);
