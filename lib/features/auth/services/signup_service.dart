@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
+import 'package:hayaath_shopping/network/mynet.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpServie {
@@ -23,7 +24,7 @@ class SignUpServie {
           token: '');
 
       http.Response res = await http.post(
-        Uri.parse('http://192.168.48.218:3000/authentication/signup'),
+        Uri.parse('$url/authentication/signup'),
         body: user.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',

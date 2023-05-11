@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
 import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
-import 'package:hayaath_shopping/features/auth/services/authentication.dart';
+import 'package:hayaath_shopping/features/auth/services/tokencheck.dart';
 import 'package:hayaath_shopping/features/home/pages/home_page.dart';
 import 'package:hayaath_shopping/routes/routes.dart';
 import 'package:hayaath_shopping/theme/application_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-
-void main() {
+late SharedPreferences mysharedPreferences;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  mysharedPreferences = await SharedPreferences.getInstance();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
@@ -29,8 +32,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    tokenController.tokenResult(context: context);
     super.initState();
+    tokenController.tokenResult(context: context);
   }
 
   @override

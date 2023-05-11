@@ -7,19 +7,26 @@ const { protect } = require('../../middlewares/jwtAuth');
 const tokenCheck = express.Router();
 
 tokenCheck.post('/authentication/usercheck', async (req, result) => {
+// console.log(req);
 
     try {
+        const authHeader = req.header("Bearer");
+        console.log(authHeader);
         if (authHeader) {
-            const token = authHeader.split(' ')[1];
+            const token = authHeader
+            console.log(token);
             const verified = jwt.verify(token, "passwordKey");
+            console.log(verified,'ttttt');
             if (!verified) {
+                console.log('ffff');
                 return result.json(false);
             }
             const user = User.findById(verified.id);
             if (!user) {
+                console.log('iiiii');
                 return result.json(false);
             }
-            result.json(true);
+            result.status(200).json(true);
 
         }
     } catch (error) {
@@ -35,7 +42,7 @@ tokenCheck.post('/authentication/usercheck', async (req, result) => {
 
 //getUserData
 
-tokenCheck.get("/", auth, async (req, res) => {
+tokenCheck.get("/authentication/userdata", auth, async (req, res) => {
     const user = await User.findById(req.user);
     res.json({ ...user._doc, token: req.token });
   });
