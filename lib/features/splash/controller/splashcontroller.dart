@@ -7,7 +7,7 @@ import '../../home/pages/home_page.dart';
 
 class SplashProvider extends ChangeNotifier {
   gotoHome(BuildContext context) async {
-     Future.delayed(
+     Future.delayed( 
       const Duration(seconds: 3),
     );
     Provider.of<UserProvider>(context).user.token.isNotEmpty
