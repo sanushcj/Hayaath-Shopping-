@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
+import 'package:hayaath_shopping/features/bottom-navigation-bar/bottomnavbar.dart';
 import 'package:hayaath_shopping/features/home/pages/home_page.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
@@ -40,10 +41,11 @@ class LoginService {
             print(response.body.toString());
             Provider.of<UserProvider>(context, listen: false)
                 .setUser(response.body);
-            mysharedPreferences.setString('x-auth-token', jsonDecode(response.body)['token']);
+            mysharedPreferences.setString(
+                'x-auth-token', jsonDecode(response.body)['token']);
             // log(mysharedPreferences.getString('x-auth-token').toString());
             Navigator.pushNamedAndRemoveUntil(
-                context, HomePage.routeName, (route) => false);
+                context, MyBottomNavBar.bottomRoute, (route) => false);
           },
           response: response,
           context: context);
