@@ -33,14 +33,15 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
       child: Scaffold(
         body: _listofPages.elementAt(_selectedIndex),
         bottomNavigationBar: Container(
+          width: double.infinity,
           decoration: BoxDecoration(color: Pallete.pureblack),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+            padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 2),
             child: GNav(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               // tabBorderRadius: 30,
               duration: Duration(milliseconds: 400),
-              gap: 10,
+              gap: 8,
               activeColor: Pallete.secondBackground,
               color: Color.fromARGB(255, 43, 44, 45),
               backgroundColor: Pallete.pureblack,

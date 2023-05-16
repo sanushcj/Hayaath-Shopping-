@@ -4,7 +4,6 @@ import 'package:hayaath_shopping/core/failures/errorhandling.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
 import 'package:hayaath_shopping/features/bottom-navigation-bar/bottomnavbar.dart';
-import 'package:hayaath_shopping/features/home/pages/home_page.dart';
 import 'package:hayaath_shopping/model/usermodel.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
