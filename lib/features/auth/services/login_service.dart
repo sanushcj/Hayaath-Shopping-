@@ -48,8 +48,10 @@ class LoginService {
           },
           response: response,
           context: context);
-    } catch (e) {
-      showSnackBar(context, "$e -- Errorr Successfully");
+    } catch (error) {
+      showSnackBar(context, "$error -- Errorr Successfully");
+      if (error == "dkwhcuwucheuc") {
+      }
     }
   }
 }

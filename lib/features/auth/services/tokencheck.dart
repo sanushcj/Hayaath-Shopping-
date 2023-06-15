@@ -23,22 +23,21 @@ class TokenCheck {
           });
       bool response = jsonDecode(tokenResult.body);
       // log(response);
-
-      if (response
-       == true) {
+      
+      if (response == true) {
         http.Response userResponse = await http.get(
             Uri.parse('$url/authentication/userdata'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
               'Bearer': token
             });
-
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userResponse.body);
       }
     } catch (e) {
       showSnackBar(context,
-          "$e -- Errorr Successfully in authentication token checking from dart");
+          "$e -- Error Successfully in authentication token checking from dart");
+
     }
   }
 }

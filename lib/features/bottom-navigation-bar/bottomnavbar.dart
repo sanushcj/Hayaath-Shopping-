@@ -42,7 +42,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               // tabBorderRadius: 30,
               duration: Duration(milliseconds: 400),
               gap: 8,
-              activeColor: Pallete.secondBackground,
+              activeColor: Pallete.iceBlue,
               color: Color.fromARGB(255, 43, 44, 45),
               backgroundColor: Pallete.pureblack,
               curve: standardEasing,

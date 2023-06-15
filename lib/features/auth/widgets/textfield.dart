@@ -29,7 +29,7 @@ class AuthTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(40),
               borderSide: const BorderSide(
-                color: Pallete.unselectedNavBarColor,
+                color: Pallete.pureblack,
               ),
             ),
             contentPadding: const EdgeInsets.all(20),
