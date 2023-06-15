@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hayaath_shopping/features/auth/controller/user_provider.dart';
 import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import 'package:hayaath_shopping/features/auth/services/tokencheck.dart';
@@ -13,11 +14,15 @@ late SharedPreferences mysharedPreferences;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   mysharedPreferences = await SharedPreferences.getInstance();
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (context) => UserProvider(),
-    )
-  ], child: MyApp()));
+  final fontLoader = FontLoader("LogoName");
+  fontLoader.addFont(rootBundle.load('assets/font/HayaathHomeLogo.TTF'));
+  fontLoader.load().then((_) {
+    runApp(MultiProvider(providers: [
+      ChangeNotifierProvider(
+        create: (context) => UserProvider(),
+      )
+    ], child: MyApp()));
+  });
 }
 
 class MyApp extends StatefulWidget {
