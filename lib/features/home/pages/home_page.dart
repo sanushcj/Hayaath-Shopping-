@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hayaath_shopping/common/alltextfields.dart';
 import 'package:hayaath_shopping/features/home/widgets/horizontal_listview.dart';
 import 'package:hayaath_shopping/theme/colors.dart';
 import '../widgets/homefeed_container.dart';

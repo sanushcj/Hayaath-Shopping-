@@ -121,8 +121,8 @@ class ProductContainerFeed extends StatelessWidget {
           GestureDetector(
             onTap: () => ontap,
             child: Container(
-              height: 180,
-              width: 180,
+              height: 150,
+              width: 150,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover, image: NetworkImage(img))),

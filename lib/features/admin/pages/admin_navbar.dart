@@ -1,30 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:hayaath_shopping/features/home/pages/home_page.dart';
 import 'package:hayaath_shopping/theme/colors.dart';
+import 'home/admin_posts.dart';
 
-class MyBottomNavBar extends StatefulWidget {
-  const MyBottomNavBar({super.key});
+class AdminNavBar extends StatefulWidget {
+  const AdminNavBar({super.key});
 
   static final bottomRoute = '/bottomPage';
 
   @override
-  State<MyBottomNavBar> createState() => _MyBottomNavBarState();
+  State<AdminNavBar> createState() => _AdminNavBarState();
 }
 
-class _MyBottomNavBarState extends State<MyBottomNavBar> {
+class _AdminNavBarState extends State<AdminNavBar> {
   int _selectedIndex = 0;
   final List<Widget> _listofPages = <Widget>[
-    HomePage(),
+    AdminHomePage(),
     Text(
-      'Likes',
+      'Analytics',
     ),
     Text(
-      'Search',
-    ),
-    Text(
-      'Profile',
+      'Cart',
     ),
   ];
   @override
@@ -53,21 +50,15 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               tabs: [
                 GButton(
                   icon: CupertinoIcons.home,
-                  text: 'HOME',
+                  text: 'Home',
                 ),
                 GButton(
                   icon: CupertinoIcons.list_bullet_below_rectangle,
-                  text: 'STORE',
+                  text: 'Analytics',
                 ),
                 GButton(
-                  style: GnavStyle.google,
-                  iconSize: 18,
                   icon: CupertinoIcons.profile_circled,
-                  text: 'ACCOUNT',
-                ),
-                GButton(
-                  icon: CupertinoIcons.cart,
-                  text: 'CART',
+                  text: 'Cart',
                 ),
               ],
               selectedIndex: _selectedIndex,

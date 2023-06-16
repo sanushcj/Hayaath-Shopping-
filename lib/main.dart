@@ -9,6 +9,8 @@ import 'package:hayaath_shopping/theme/application_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/admin/pages/admin_navbar.dart';
+
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 late SharedPreferences mysharedPreferences;
 void main() async {
@@ -44,7 +46,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? MyBottomNavBar()
+          ? Provider.of<UserProvider>(context).user.type == "user"
+              ? MyBottomNavBar()
+              : AdminNavBar()
           : LoginPage(),
       theme: HayaathTheme.theme,
       debugShowCheckedModeBanner: false,
