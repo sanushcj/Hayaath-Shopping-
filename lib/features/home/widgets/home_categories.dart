@@ -13,6 +13,7 @@ class HomeCategories extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
+            backgroundColor: Pallete.transparent,
             backgroundImage: NetworkImage(
               img,
             ),
