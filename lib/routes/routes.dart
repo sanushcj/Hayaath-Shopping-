@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hayaath_shopping/features/admin/pages/product/add_product.dart';
 import 'package:hayaath_shopping/features/auth/pages/login_page.dart';
 import 'package:hayaath_shopping/features/auth/pages/signup_page.dart';
 import 'package:hayaath_shopping/features/bottom-navigation-bar/bottomnavbar.dart';
@@ -10,5 +11,6 @@ final Map<String, WidgetBuilder> routes = {
   LoginPage.routeName: (context) => const LoginPage(),
   SignUPage.routeName: (context) => const SignUPage(),
   MyBottomNavBar.bottomRoute: (context) => const MyBottomNavBar(),
-  HomePage.routeName: (context) => const HomePage()
+  HomePage.routeName: (context) => const HomePage(),
+  AddProductPage.routeName: (context) => AddProductPage(),
 };

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/common/alltextfields.dart';
+import 'package:hayaath_shopping/features/admin/pages/product/add_product.dart';
 import '../../../../theme/colors.dart';
 
 class AdminHomePage extends StatelessWidget {
@@ -33,7 +34,7 @@ class AdminHomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          log('Hello Sanush CJ');
+          Navigator.pushNamed(context, AddProductPage.routeName);
         },
         child: Icon(Icons.add),
         elevation: 5,

@@ -4,17 +4,15 @@ import '../theme/colors.dart';
 
 // ignore: must_be_immutable
 class NormalText extends StatelessWidget {
-   NormalText({
-    super.key,
-    required this.thetext, this.color,
-  });
+  NormalText({super.key, required this.thetext, this.color, this.size});
   final String thetext;
-   Color? color;
+  Color? color;
+  double? size;
   @override
   Widget build(BuildContext context) {
     return Text(
       thetext,
-      style: TextStyle(color: color ?? Pallete.pureblack),
+      style: TextStyle(color: color ?? Pallete.pureblack, fontSize: size ?? 15),
     );
   }
 }
