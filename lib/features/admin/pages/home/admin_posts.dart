@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/common/alltextfields.dart';
 import 'package:hayaath_shopping/features/admin/pages/product/add_product.dart';

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/common/alltextfields.dart';
 import 'package:hayaath_shopping/features/admin/pages/product/widgets/addPproduct_screen_widgets.dart';
 import 'package:hayaath_shopping/theme/colors.dart';
-
 import '../../../../core/utilitiies.dart';
 
 class AddProductPage extends StatefulWidget {
