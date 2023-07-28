@@ -43,15 +43,14 @@ class LoginService {
             mysharedPreferences.setString(
                 'x-auth-token', jsonDecode(response.body)['token']);
             // log(mysharedPreferences.getString('x-auth-token').toString());
-            Navigator.pushNamedAndRemoveUntil(
-                context, MyBottomNavBar.bottomRoute, (route) => false);
+            // Navigator.pushNamedAndRemoveUntil(
+            //     context, MyBottomNavBar.bottomRoute, (route) => false);
           },
           response: response,
           context: context);
     } catch (error) {
       showSnackBar(context, "$error -- Errorr Successfully");
-      if (error == "dkwhcuwucheuc") {
-      }
+      if (error == "dkwhcuwucheuc") {}
     }
   }
 }
