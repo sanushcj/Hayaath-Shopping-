@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:hayaath_shopping/core/utilitiies.dart';
+import 'package:hayaath_shopping/model/productmodel.dart';
 
 class AdminServices {
   sellmyProduct(
@@ -22,6 +23,13 @@ class AdminServices {
         );
         imageUrls.add(result.secureUrl);
       }
+      ProductModel product = ProductModel(
+          name: name,
+          description: description,
+          quantity: quantity,
+          images: imageUrls,
+          category: Category,
+          price: price);
     } catch (e) {
       showSnackBar(context, e.toString());
     }
